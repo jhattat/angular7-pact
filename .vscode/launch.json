@@ -13,8 +13,33 @@
       "type": "chrome",
       "request": "launch",
       "url": "http://localhost:9877/debug.html",
-      "webRoot": "${workspaceFolder}",
+      "webRoot": "${workspaceRoot}/Test",
+
+    //  "webRoot": "${workspaceFolder}",
+      //"webRoot": "${workspaceRoot}/build/**/*",
       "trace": true
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Karma Tests",
+      "sourceMaps": true,
+      "webRoot": "${workspaceRoot}",
+      "url": "http://localhost:9877/debug.html",
+      // "runtimeArgs": [
+      //     "--headless"
+      // ],
+      "pathMapping": {
+          "/": "${workspaceRoot}",
+          "/base/": "${workspaceRoot}/"
+      },
+      "sourceMapPathOverrides": {
+          "webpack:///./*": "${webRoot}/*",
+          "webpack:///src/*": "${webRoot}/*",
+          "webpack:///*": "*",
+          "webpack:///./~/*": "${webRoot}/node_modules/*",
+          "meteor://💻app/*": "${webRoot}/*"
+      }
     },
     {
       "name": "ng e2e",

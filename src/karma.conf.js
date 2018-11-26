@@ -26,8 +26,14 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
+    browsers: ['ChromeDebugging'],
     singleRun: false,
+    customLaunchers: {
+      ChromeDebugging: {
+        base: 'Chrome',
+        flags: [ '--remote-debugging-port=9333' ]
+      }
+    },
     pact: [{cors: true, spec: 2, port: 1234, dir: 'pacts/'}],  // 3) configure one or multiple pact-mock-services here
     proxies: { // 4) here we can define proxies to redirect requests from our pact tests to the mock server
       '/user-service/users': 'http://localhost:1234/user-service/users'
